@@ -1,0 +1,11 @@
+Question,Option A,Option B,Option C,Option D,Answer
+Q1. Thủ đô của nước Mỹ là gì?,Washington DC,Ohklahoma,Texas,Florida,a
+Q2. Ngọn núi cao nhất thế giới là gì?,Everest,Fansipan,Fuji,Kilimanjaro,a
+Q3. Thành phần chính của sôcôla là gì?,Sữa,Đường,Cacao,Bột,c
+Q4. Loài nào trong tiếng Anh là "giraffe"?,Hươu cao cổ,Ngựa,Tê giác,Sư tử,a
+Q5. Màu nào trong đây KHÔNG PHẢI là màu cơ bản?,Vàng,Xanh dương,Tím,Đỏ,c
+Q6. Một hình lục giác có bao nhiêu cạnh?,5,6,7,8,b
+Q7. Một năm nhuận có bao nhiêu ngày?,364,356,365,366,d
+Q8. Hành tinh thứ 4 từ Mặt trời là gì?,Trái Đất,Sao Hỏa,Sao Kim,Sao Mộc,b
+Q9. Tháp nghiêng Pisa nằm ở nơi nào?,Hà Lan,Anh,Pháp,Ý,d
+Q10. In ra "0.1 + 0.2" ra gì trong Python?,0.30000000000000004,0.30,3/10,0.3,a

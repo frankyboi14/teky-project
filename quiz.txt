@@ -1,20 +1,29 @@
-1. Thủ đô của nước Mỹ là gì?
-    a) Washington DC    b) Ohklahoma    c) Texas    d) Florida
-2. Ngọn núi cao nhất thế giới là gì?
-    a) Everest    b) Fansipan    c) Fuji    d) Kilimanjaro
-3. Thành phần chính của sôcôla là gì?
-    a) Sữa    b) Đường    c) Cacao    d) Bột
-4. Loài nào trong tiếng Anh là "giraffe"?
-    a) Hươu cao cổ    b) Ngựa    c) Tê giác    d) Sư tử
-5. Màu nào trong đây KHÔNG PHẢI là màu cơ bản?
-    a) Vàng    b) Xanh dương    c) Tím    d) Đỏ
-6. Một hình lục giác có bao nhiêu cạnh?
-    a) 5    b) 6    c) 7    d) 8
-7. Một năm nhuận có bao nhiêu ngày?
-    a) 364    b) 356    c) 365    d) 366
-8. Hành tinh thứ 4 từ Mặt trời là gì?
-    a) Trái Đất    b) Sao Hỏa    c) Sao Kim    d) Sao Mộc
-9. Tháp nghiêng Pisa nằm ở nơi nào?
-    a) Hà Lan    b) Anh    c) Pháp    d) Ý
-10. In ra "0.1 + 0.2" ra gì trong Python?
-    a) 0.30000000000000004    b) 0.30    c) 3/10    d) 0.3
+Q1. Thủ đô của nước Mỹ là gì? | a
+a) Washington DC    b) Ohklahoma    c) Texas    d) Florida
+
+Q2. Ngọn núi cao nhất thế giới là gì? | a
+a) Everest    b) Fansipan    c) Fuji    d) Kilimanjaro
+
+Q3. Thành phần chính của sôcôla là gì? | c
+a) Sữa    b) Đường    c) Cacao    d) Bột
+
+Q4. Loài nào trong tiếng Anh là "giraffe"? | a
+a) Hươu cao cổ    b) Ngựa    c) Tê giác    d) Sư tử
+
+Q5. Màu nào trong đây KHÔNG PHẢI là màu cơ bản? | c
+a) Vàng    b) Xanh dương    c) Tím    d) Đỏ
+
+Q6. Một hình lục giác có bao nhiêu cạnh? | b
+a) 5    b) 6   c) 7    d) 8
+
+Q7. Một năm nhuận có bao nhiêu ngày? | d
+a) 364    b) 356    c) 365    d) 366
+
+Q8. Hành tinh thứ 4 từ Mặt trời là gì? | b
+a) Trái Đất    b) Sao Hỏa    c) Sao Kim    d) Sao Mộc
+
+Q9. Tháp nghiêng Pisa nằm ở nơi nào? | d
+a) Hà Lan    b) Anh    c) Pháp    d) Ý
+
+Q10. In ra "0.1 + 0.2" ra gì trong Python? | a
+a) 0.30000000000000004    b) 0.30    c) 3/10    d) 0.3
