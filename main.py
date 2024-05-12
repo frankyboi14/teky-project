@@ -11,6 +11,9 @@ cursor_end = '\033[K'
 def throw(msg):
     print(f"[!] {msg}")
 
+def format_money(value):
+    return format(value, ",").replace(",", ".")
+
 with open("quiz-data.txt", "r", encoding="utf-8") as f:
     content = f.read()
 
@@ -22,12 +25,28 @@ OPTION_LETTERS = ("a", "b", "c", "d")
 help_options = ["50", "call", "vote"]
 
 clear()
+name = input("Tên của bạn: ")
+clear()
+print(f"Xin chào, {name}!")
+time.sleep(2)
+print("Chào mừng bạn với chương trình: ", end="")
+time.sleep(2)
+print("AI LÀ TRIỆU PHÚ")
+time.sleep(2)
+
+print("Chúng ta hãy bắt đầu nào", end="")
+for _ in range(3):
+    print(".", end="")
+    time.sleep(1)
+
+clear()
 money = 100_000
 for i in content[1:]:
     clear()
 
-    # current money/help
-    print(f"Số tiền hiện tại: {format(money, ",").replace(",", ".")}")
+    print(f"Số tiền hiện tại: {format_money(money)}")
+
+    # show helpers
     print(f"Các quyền trợ giúp: ", end="")
     for o in help_options:
         string = ""
@@ -36,6 +55,7 @@ for i in content[1:]:
             case "call": string = "Gọi người thân (nhập 'call')"
             case "vote": string = "Ý kiến khán giả (nhập 'vote')"
         print(string, end=", ")
+
     print("\n")
     
     # show question
@@ -43,6 +63,8 @@ for i in content[1:]:
     options_shown = OPTION_LETTERS
     while True:
         print(question)
+
+        # show options
         for l, x in enumerate(options):
             letter = OPTION_LETTERS[l]
             if letter not in options_shown:
@@ -53,25 +75,31 @@ for i in content[1:]:
         inp = input("Trả lời: ").lower()
         if inp in help_options:
             help_options.remove(inp)
+            
+            # help options
             match inp:
-                case "50":
+                case "50": # 50/50
                     clear()
                     options_shown = [answer, random.choice([x for x in OPTION_LETTERS if x != answer])]
                     throw("Đã bỏ đi 2 đáp án sai")
-                case "call":
-                    choice = OPTION_LETTERS + (answer,)*10
-                    print(choice)
+                case "call": # calling (likely to be correct)
                     choice = random.choice(OPTION_LETTERS + (answer,)*10)
+
+                    # suspense
                     print("Đang gọi", end="")
                     for _ in range(10):
                         print(".", end="")
                         time.sleep(.5)
+                    time.sleep(2)
+
                     clear()
                     throw(f'"Tôi nghĩ đáp án đúng là {choice.upper()}!"')
-                case "vote":
+                case "vote": # voting (most reliable)
                     clear()
                     throw("Khán giả đang quyết định...")
                     votes = {l: 0 for l in OPTION_LETTERS}
+
+                    # printing votes and refreshing screen
                     for _ in range(100):
                         choice = random.choice(OPTION_LETTERS + (answer,))
                         votes[choice] += 1
@@ -80,6 +108,7 @@ for i in content[1:]:
                         print(cursor_up(5))
                         time.sleep(.05)
                     
+                    # final votes
                     most_voted, most_votes = "", 0
                     for i in OPTION_LETTERS:
                         if votes[i] > most_votes:
@@ -99,7 +128,7 @@ for i in content[1:]:
             continue
         
         # confirming
-        final = input("Bạn có chắc không (Y/N): ").lower()
+        final = input("Bạn có chắc không? (Y/N): ").lower()
         if final in ("y", "yes"):
             break
         elif final in ("n", "no"):
@@ -109,7 +138,6 @@ for i in content[1:]:
             clear()
             throw("Hãy nhập Y hoặc N để xác nhận.")
     print()
-    clear()
 
     # suspense
     print("Câu trả lời của bạn", end="")
@@ -128,14 +156,19 @@ for i in content[1:]:
         money = 0
         break
     
-    print("Chuẩn bị qua câu kế tiếp", end="")
-    for _ in range(3):
-        print(".", end="")
-        time.sleep(1)
+    # segue
+    if i != content[-1]:
+        print("Chuẩn bị qua câu kế tiếp", end="")
+        for _ in range(3):
+            print(".", end="")
+            time.sleep(1)
+        print()
+        clear()
 
-    print()
-
+# final results
 if money > 0:
-    print(f"\nTiền thưởng: {money}\n")
+    print(f"\nTiền thưởng: {format_money(money)}\n")
 else:
     print(f"Rất tiếc, bạn đã mất hết tiền!")
+
+input("\n(Nhấn ENTER để thoát khỏi chương trình)\n")
