@@ -1,4 +1,4 @@
-import os, time, random
+import os, time, random, datetime
 
 def clear():
     os.system("cls")
@@ -28,11 +28,11 @@ clear()
 name = input("Tên của bạn: ")
 clear()
 print(f"Xin chào, {name}!")
-time.sleep(2)
+time.sleep(1)
 print("Chào mừng bạn với chương trình: ", end="")
-time.sleep(2)
+time.sleep(1)
 print("AI LÀ TRIỆU PHÚ")
-time.sleep(2)
+time.sleep(1)
 
 print("Chúng ta hãy bắt đầu nào", end="")
 for _ in range(3):
@@ -98,7 +98,7 @@ for i in content[1:]:
                     clear()
                     throw("Khán giả đang quyết định...")
                     votes = {l: 0 for l in OPTION_LETTERS}
-
+                    
                     # printing votes and refreshing screen
                     for _ in range(100):
                         choice = random.choice(OPTION_LETTERS + (answer,))
@@ -172,3 +172,11 @@ else:
     print(f"Rất tiếc, bạn đã mất hết tiền!")
 
 input("\n(Nhấn ENTER để thoát khỏi chương trình)\n")
+with open(f"save-{int(time.time())}.txt", "a", encoding="utf-8") as f:
+    f.writelines((
+        "AI LÀ TRIỆU PHÚ\n",
+        f"\nNgày: {datetime.datetime.now()}\n"
+        f"Tên: {name}\n",
+        f"Tiền: {money}đ ({'thắng' if money > 0 else 'thua'})"
+    ))
+    f.close()
