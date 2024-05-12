@@ -24,9 +24,21 @@ help_options = ["50", "call", "vote"]
 clear()
 money = 100_000
 for i in content[1:]:
+    clear()
+
+    # current money/help
     print(f"Số tiền hiện tại: {format(money, ",").replace(",", ".")}")
-    print(f"Các quyền trợ giúp: 50/50 (nhập '50'), Gọi người thân (nhập 'call'), Ý kiến khán giả (nhập 'vote')", end="\n\n")
+    print(f"Các quyền trợ giúp: ", end="")
+    for o in help_options:
+        string = ""
+        match o:
+            case "50": string = "50/50 (nhập '50')"
+            case "call": string = "Gọi người thân (nhập 'call')"
+            case "vote": string = "Ý kiến khán giả (nhập 'vote')"
+        print(string, end=", ")
+    print("\n")
     
+    # show question
     question, *options, answer = i.split(",")
     options_shown = OPTION_LETTERS
     while True:
@@ -37,6 +49,7 @@ for i in content[1:]:
                 continue
             print(f"{OPTION_SPACING}{letter}) {x}")
 
+        # answering
         inp = input("Trả lời: ").lower()
         if inp in help_options:
             help_options.remove(inp)
@@ -46,7 +59,15 @@ for i in content[1:]:
                     options_shown = [answer, random.choice([x for x in OPTION_LETTERS if x != answer])]
                     throw("Đã bỏ đi 2 đáp án sai")
                 case "call":
-                    pass
+                    choice = OPTION_LETTERS + (answer,)*10
+                    print(choice)
+                    choice = random.choice(OPTION_LETTERS + (answer,)*10)
+                    print("Đang gọi", end="")
+                    for _ in range(10):
+                        print(".", end="")
+                        time.sleep(.5)
+                    clear()
+                    throw(f'"Tôi nghĩ đáp án đúng là {choice.upper()}!"')
                 case "vote":
                     clear()
                     throw("Khán giả đang quyết định...")
@@ -67,8 +88,7 @@ for i in content[1:]:
                         elif votes[i] == most_votes:
                             most_voted = f"{most_voted} hoặc {i}"
                     print("\n"*4)
-                    throw(f"Ý kiến của khán giả cho ta thấy rằng đáp án đúng nhất là {most_voted}!")
-                    # input("Nhấn ENTER để quay lại ")
+                    throw(f"Ý kiến của khán giả cho ta thấy rằng đáp án đúng nhất là {most_voted.upper()}!")
             continue
         elif inp not in OPTION_LETTERS:
             clear()
@@ -78,20 +98,35 @@ for i in content[1:]:
                 throw(f"Nhập {", ".join(OPTION_LETTERS[:-1])} hoặc {OPTION_LETTERS[-1]}")
             continue
         
+        # confirming
         final = input("Bạn có chắc không (Y/N): ").lower()
-        if final not in ("ko", "no", "n"):
+        if final in ("y", "yes"):
             break
-        else:
+        elif final in ("n", "no"):
             clear()
             throw("Mời bạn chọn lại đáp án")
-            continue
-    print("\n")
+        else:
+            clear()
+            throw("Hãy nhập Y hoặc N để xác nhận.")
+    print()
+    clear()
+
+    # suspense
+    print("Câu trả lời của bạn", end="")
+    for _ in range(3):
+        print(".", end="")
+        time.sleep(1)
+    time.sleep(2)
+
+    # right/wrong
     if inp == answer:
-        print("Đúng! (+100.000)")
+        print(" đúng! (+100.000)")
         money += 100_000
     else:
-        print("Sai!")
+        print(" sai!")
+        time.sleep(1)
         money = 0
+        break
     
     print("Chuẩn bị qua câu kế tiếp", end="")
     for _ in range(3):
@@ -99,6 +134,8 @@ for i in content[1:]:
         time.sleep(1)
 
     print()
-    clear()
 
-print(f"\nTiền thưởng: {money}\n")
+if money > 0:
+    print(f"\nTiền thưởng: {money}\n")
+else:
+    print(f"Rất tiếc, bạn đã mất hết tiền!")
